@@ -14,7 +14,7 @@ action "checkout" {
 action "move" {
   uses = "actions/bin/sh@master"
   needs = ["checkout"]
-  runs = "mv bpmn-studio/* ."
+  runs = "ls -la"
 }
 
 action "install" {
