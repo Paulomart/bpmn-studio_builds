@@ -6,8 +6,15 @@ workflow "New workflow" {
   ]
 }
 
+
+action "move" {
+  uses = "docker://bash"
+  runs = "rm -fr .git"
+}
+
 action "init" {
   uses = "docker://alpine/git"
+  needs = ["move"]
   args = "init"
 }
 
@@ -21,12 +28,6 @@ action "pull" {
   uses = "docker://alpine/git"
   needs = ["add origin"]
   args = "checkout bpmnstudio/master"
-}
-
-action "move" {
-  uses = "docker://bash"
-  needs = ["pull"]
-  runs = "echo hi"
 }
 
 action "install" {
