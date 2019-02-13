@@ -14,13 +14,13 @@ action "init" {
 action "add origin" {
   uses = "docker://alpine/git"
   needs = ["init"]
-  args = "remote add origin https://github.com/process-engine/bpmn-studio.git"
+  args = "remote add bpmnstudio https://github.com/process-engine/bpmn-studio.git"
 }
 
 action "pull" {
   uses = "docker://alpine/git"
   needs = ["add origin"]
-  args = "pull origin master"
+  args = "pull bpmnstudio master"
 }
 
 action "move" {
