@@ -13,8 +13,8 @@ action "checkout" {
 
 action "move" {
   uses = "actions/bin/sh@master"
-  args = "mv bpmn-studio/* ."
   needs = ["checkout"]
+  runs = "mv bpmn-studio/* ."
 }
 
 action "install" {
