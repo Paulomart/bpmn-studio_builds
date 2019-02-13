@@ -25,8 +25,8 @@ action "pull" {
 
 action "move" {
   uses = "docker://bash"
-  needs = ["checkout"]
-  runs = "mv ./bpmn-studio/package.json ."
+  needs = ["pull"]
+  runs = "echo hi"
 }
 
 action "install" {
