@@ -5,5 +5,5 @@ workflow "New workflow" {
 
 action "docker://alpine/git" {
   uses = "docker://alpine/git"
-  args = "git clone https://github.com/process-engine/bpmn-studio.git"
+  args = "clone https://github.com/process-engine/bpmn-studio.git"
 }
