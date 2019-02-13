@@ -27,7 +27,7 @@ action "add origin" {
 action "pull" {
   uses = "docker://alpine/git"
   needs = ["add origin"]
-  args = "checkout bpmnstudio/master"
+  args = "pull bpmnstudio master"
 }
 
 action "install" {
