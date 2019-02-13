@@ -8,7 +8,7 @@ workflow "New workflow" {
 
 action "checkout" {
   uses = "docker://alpine/git"
-  args = "git clone https://github.com/process-engine/bpmn-studio.git"
+  args = "clone https://github.com/process-engine/bpmn-studio.git"
 }
 
 action "move" {
@@ -28,4 +28,3 @@ action "build" {
   args = "build"
   needs = ["install"]
 }
-
