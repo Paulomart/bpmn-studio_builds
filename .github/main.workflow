@@ -14,8 +14,7 @@ action "checkout" {
 action "move" {
   uses = "docker://bash"
   needs = ["checkout"]
-  runs = "mv"
-  args = "bpmn-studio/* .."
+  args = "mv bpmn-studio/* .."
 }
 
 action "install" {
