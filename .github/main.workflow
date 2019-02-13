@@ -1,21 +1,31 @@
 workflow "New workflow" {
   on = "issue_comment"
-  resolves = ["GitHub Action for npm"]
+  resolves = [
+    "move",
+    "build",
+  ]
 }
 
-action "docker://alpine/git" {
+action "checkout" {
   uses = "docker://alpine/git"
-  args = "init && git remote add -t \\* -f origin https://github.com/process-engine/bpmn-studio.git && git checkout master"
+  args = "git clone https://github.com/process-engine/bpmn-studio.git"
+}
+
+action "move" {
+  uses = "actions/bin/sh@master"
+  args = "mv bpmn-studio/* ."
+  needs = ["checkout"]
+}
+
+action "install" {
+  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  args = "install"
+  needs = ["move"]
 }
 
 action "build" {
   uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
-  needs = ["docker://alpine/git"]
-  args = "install"
+  args = "build"
+  needs = ["install"]
 }
 
-action "GitHub Action for npm" {
-  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
-  needs = ["build"]
-  args = "build"
-}
