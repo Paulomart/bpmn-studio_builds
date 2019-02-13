@@ -33,7 +33,7 @@ action "pull" {
 action "install" {
   uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
   args = "install"
-  needs = ["move"]
+  needs = ["pull"]
 }
 
 action "build" {
