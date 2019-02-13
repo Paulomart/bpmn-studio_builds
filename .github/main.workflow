@@ -12,10 +12,10 @@ action "checkout" {
 }
 
 action "move" {
-  uses = "actions/bin/sh@master"
+  uses = "docker://bash"
   needs = ["checkout"]
   runs = "mv"
-  args = "bpmn-studio/* ."
+  args = "bpmn-studio/* .."
 }
 
 action "install" {
