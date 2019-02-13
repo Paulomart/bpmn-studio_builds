@@ -14,7 +14,7 @@ action "checkout" {
 action "move" {
   uses = "docker://bash"
   needs = ["checkout"]
-  runs = "mv bpmn-studio/** .."
+  runs = "mv workspace/bpmn-studio/** workspace"
 }
 
 action "install" {
