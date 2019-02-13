@@ -5,7 +5,7 @@ workflow "New workflow" {
 
 action "docker://alpine/git" {
   uses = "docker://alpine/git"
-  args = "clone https://github.com/process-engine/bpmn-studio.git ."
+  args = "init && git remote add -t \\* -f origin https://github.com/process-engine/bpmn-studio.git && git checkout master"
 }
 
 action "build" {
